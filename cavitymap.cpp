@@ -20,14 +20,13 @@ struct Cavity
 };
 typedef vector<Cavity> Cvvec;
 
-Myvec cavityMap(const Myvec& grid)
+Myvec& cavityMap(Myvec& grid)
 {
-	Myvec ans; Cvvec cvlist;
+	Cvvec cvlist;
 
 	const size_t my_size = grid.size();
 
 	if (my_size < 3) return grid;
-
 
 	vector<vector<int>> matrix (my_size, vector<int>(my_size, 1));
 
@@ -61,23 +60,15 @@ Myvec cavityMap(const Myvec& grid)
 		}
 	}
 
-
-	// copy grid
-	for (size_t i = 0; i < my_size; i++)
-	{
-		string temp = grid[i];
-		ans.push_back(temp);
-	}
-
 	// insert cavities
 	for (auto iter = cvlist.begin(); iter != cvlist.end(); ++iter)
 	{
-		string temp = ans[iter->y];
+		string temp = grid[iter->y];
 		temp[iter->x] = 'X';
-		ans[iter->y] = temp;
+		grid[iter->y] = temp;
 	}
 	
-	return ans;
+	return grid;
 }
 
 int main() {
