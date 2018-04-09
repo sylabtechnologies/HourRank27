@@ -12,7 +12,7 @@
   12: {
   13:     const char bell = 7;
   14:     const char space = ' ';
-  15:     const int width = 4;        // MUST BE < 9999
+  15:     const int width = 4;           // MUST BE < 9999
   16:     const int limit = 9999;        // !
   17:
   18:     string line;
